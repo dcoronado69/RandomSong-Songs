@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
+
+    <main>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="jumbotron">
+            <h1>Choose your artist!</h1>
+            <form action="/submit" method="post">
+              <input
+                type="text"
+                id="searchTerm"
+                name="searchTerm"
+                placeholder="Enter your search"
+              />
+              <input type="submit" value="Submit" />
+            </form>
+            <br />
+            <form action="/random" method="get">
+              <input type="submit" value="Random Song" />
+            </form>
+            <br />
+            <div class="alert alert-primary" role="alert">
+              <%= randNum %> <%= songs[randNum] %>
+            </div>
+            <h2>Songs</h2>
+            <ul>
+              <% if (songs != []) { %> <% songs.forEach(song => { %>
+              <li><%= song %></li>
+              <% }); %> <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
+</html>
